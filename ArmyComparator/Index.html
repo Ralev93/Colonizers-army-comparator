@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Army comparer</title>
+	<script type="text/javascript" src="calc2.js"></script>
+	<script type="text/javascript" src="data.js"></script>
+	<script
+	  src="https://code.jquery.com/jquery-3.1.1.min.js"
+	  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	  crossorigin="anonymous">
+	 </script>
+</head>
+<body>
+
+<h1>Colonizers army comparator</h1>
+
+<div class="current_army">
+	<h4> Current army  </h4>
+	<div class="container">	</div>
+ </div>
+
+<div class="compare_army">
+	<h4> Compare army  </h4>
+	<div class="container"></div>
+</div>
+
+<br><br>
+<input type="button" id= "calc" value="Compare!">
+
+<br><br>
+<div id="result"></div>
+</body>
+
+<script>
+
+$(function() {
+
+	var UNITS = {'bot': Bot, 'levithian': Levithian, 'plasmon': Plasmon, 
+				'widow': Widow, 'cruiser': Cruiser,
+				'pulsar': Pulsar, 'bat': Bat
+				},
+		html = '';
+
+
+	Object.keys(UNITS).forEach(function (unit) {
+		html += '<div class="army {unitName}" id="{unitName}">' +
+					'<input type="text" name="count" placeholder="{unitPrettyName} count"> &nbsp'+
+					'<input type="text" name="lvl" placeholder="{unitPrettyName} level"> &nbsp' +
+					'<input type="button" name="remove" class="remove" value="Remove">' +
+				'</div>';
+		html = html.supplant({'unitName' : unit, 'unitPrettyName': unit.capitalizeFirstLetter()});
+	});
+	$('.current_army .container').html(html);
+	$('.compare_army .container').html(html);
+	$('.compare_army .remove').after('&nbsp<input type="button" name="add" class="add" value="Add">');
+
+
+	function parseArmy(army_class) {
+		var army = [];
+		$('.' + army_class).find('.army').each(function() {
+			var unit = UNITS[$(this).attr('id')],
+				count = parseInt( $(this).find('input[name="count"]').val() ),
+				level = parseInt( $(this).find('input[name="lvl"]').val() );
+
+				if (count > 0 && level > 0)
+					army.push(new Troop(unit, level, count))
+		});
+		return new Army(army);
+	}
+
+
+	$('#calc').click(function() {
+		var originalArmy = parseArmy('current_army'),
+		    compareArmy = parseArmy('compare_army');
+
+		if (originalArmy.getTroopsNum() > 0 && compareArmy.getTroopsNum() > 0){
+			$('#result').html('<p>' + originalArmy.compare(compareArmy) + '</p>');
+		}
+	});
+
+
+	$('.remove').click(function() {
+		var c = $(this).closest('.army').attr('id');
+		$('.' + c).remove();
+	});
+
+
+	$('.add').click(function() {
+		var c = $(this).closest('.army').clone();
+		$(this).after(c);
+	});
+
+});
+</script>
+</html>
