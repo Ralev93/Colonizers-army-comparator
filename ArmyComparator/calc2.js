@@ -8,19 +8,19 @@ function charecteristics (dmg, armor, cost) {
 
 
 function NotDataError(message) {
-    this.name = "NotDataError";
-    this.message = (message || "");
+	this.name = "NotDataError";
+	this.message = (message || "");
 }
 NotDataError.prototype = Error.prototype;
 
 
 String.prototype.supplant = function (o) {
-    return this.replace(/{([^{}]*)}/g,
-        function (a, b) {
-            var r = o[b];
-            return typeof r === 'string' || typeof r === 'number' ? r : a;
-        }
-    );
+	return this.replace(/{([^{}]*)}/g,
+			function (a, b) {
+				var r = o[b];
+				return typeof r === 'string' || typeof r === 'number' ? r : a;
+			}
+	);
 };
 
 
@@ -32,7 +32,7 @@ String.prototype.capitalizeFirstLetter = function() {
 function Unit(name, fire_rate, supplies_needed, levels) {
 
 	var NotDataError_MSG = "No data for {unit_name}, level {level}!";
-	
+
 	this.getName = function() {
 		return name;
 	};
@@ -50,8 +50,8 @@ function Unit(name, fire_rate, supplies_needed, levels) {
 	};
 
 	this.getDamagePerSec = function(level) {
-		try { 
-			return levels[level].dmg / fire_rate; 
+		try {
+			return levels[level].dmg / fire_rate;
 		} catch(e) {
 			throw new NotDataError(NotDataError_MSG.supplant({'unit_name': name, 'level': level}));
 
@@ -59,8 +59,8 @@ function Unit(name, fire_rate, supplies_needed, levels) {
 	};
 
 	this.getArmor = function(level) {
-		try { 
-			return levels[level].armor; 
+		try {
+			return levels[level].armor;
 		} catch(e) {
 			throw new NotDataError(NotDataError_MSG.supplant({'unit_name': name, 'level': level}));
 		}
@@ -87,7 +87,7 @@ function Troop(Unit, level, count) {
 		return Unit.getDamagePerSec(level)
 	};
 
-} 
+}
 
 
 function Army (troops) {
@@ -96,7 +96,7 @@ function Army (troops) {
 		var total = 0;
 		troops.forEach(function (troop) {
 			total += troop.getDmgPerSec() * troop.getCount();
-		})
+		});
 		return total;
 	};
 
@@ -104,17 +104,17 @@ function Army (troops) {
 		var total = 0;
 		troops.forEach(function (troop) {
 			total += troop.getArmor() * troop.getCount();
-		})
+		});
 		return total;
 	};
 
 	this.compare = function(army2) {
-		
+
 		try	{
-			var 
-				result = "",  dmg_ratio, armor_ratio, 
-				dmg1 = this.getDamage(), dmg2 = army2.getDamage(),
-				arm1 = this.getArmor(), arm2 = army2.getArmor();
+			var
+                result = "",  dmg_ratio, armor_ratio,
+                dmg1 = this.getDamage(), dmg2 = army2.getDamage(),
+                arm1 = this.getArmor(), arm2 = army2.getArmor();
 		} catch (e) {
 			if (e instanceof NotDataError) {
 				return e.message;
@@ -123,8 +123,8 @@ function Army (troops) {
 			}
 		}
 
-		 dmg_ratio = (dmg1 <= dmg2) ? 1 - (dmg1 / dmg2)  : (dmg2 / dmg1) - 1;
-		 armor_ratio = (arm1 <= arm2) ? 1 - (arm1 / arm2) : (arm2 / arm1) - 1;
+		dmg_ratio = (dmg1 <= dmg2) ? 1 - (dmg1 / dmg2)  : (dmg2 / dmg1) - 1;
+		armor_ratio = (arm1 <= arm2) ? 1 - (arm1 / arm2) : (arm2 / arm1) - 1;
 
 		result += "Damage " + ((dmg_ratio > 0) ?  "increase: " : "decrease: ") + (dmg_ratio * 100).toFixed(2) + '% <br>';
 		result += "Armor " + ((armor_ratio > 0) ?  "increase: " : "decrease: ") + (armor_ratio * 100).toFixed(2) + '% <br>';
