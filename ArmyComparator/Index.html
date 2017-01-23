@@ -35,11 +35,12 @@
 
     $(function() {
 
-        var UNITS = {'bot': Bot, 'levithian': Levithian, 'plasmon': Plasmon,
+        var UNITS = {
+                    'bot': Bot, 'levithian': Levithian, 'plasmon': Plasmon,
                     'widow': Widow, 'cruiser': Cruiser,
-                    'pulsar': Pulsar, 'bat': Bat, 'anhi':Anhillator
-                },
-                html = '';
+                    'pulsar': Pulsar, 'bat': Bat, 'anhi': Anhillator
+            },
+            html = '';
 
 
         Object.keys(UNITS).forEach(function (unit) {
