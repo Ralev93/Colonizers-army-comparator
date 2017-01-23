@@ -8,7 +8,7 @@ A simple colonizers army comparator, with which one can find answer to the quest
 4. Do I really need level 6 for troop X in reinforcement?
 
 
-# How to use:
+# How to use
 Download the zip file to your computer.
 Open Index.html with your favourite browser.
 Compare & enjoy!
