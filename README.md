@@ -9,9 +9,9 @@ A simple colonizers army comparator, with which one can find answer to the quest
 
 
 # How to use
-Download the zip file to your computer.
-Open Index.html with your favourite browser.
-Compare & enjoy!
+1. Download the zip file to your computer.
+2. Open Index.html with your favourite browser.
+3. Compare & enjoy!
 
 # Contribute
 A lot of data is still missing (look at data.js), so please fulfill it.
