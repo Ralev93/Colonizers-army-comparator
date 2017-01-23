@@ -20,6 +20,6 @@ A lot of data is still missing (look at data.js), so please fulfill it.
 
 #####_Disclaimer_
 Although some troops might have bigger damage per second versus others, the later may be much better choice.
-_For example_: 15 6* Levithians have **73.52%** more dmg/s versus 3 widows 6*, but still the **widows are much more better**.
+_For example_: 15 6* Levithians have **73.52%** more dmg/s versus 3 widows 6\*, but still the **widows are much more better**.
 
 Note also, that the application doesn't consider the additional levithians after widow's death...for now. 
