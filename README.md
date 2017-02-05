@@ -9,6 +9,10 @@ A simple colonizers army comparator, with which one can find answer to the quest
 
 
 # How to use
+Simply <a> [click here](https://ralev93.github.io/Colonizers-army-comparator/ArmyComparator) </a>
+
+ OR 
+ 
 1. Download the zip file to your computer.
 2. Open Index.html with your favourite browser.
 3. Compare & enjoy!
