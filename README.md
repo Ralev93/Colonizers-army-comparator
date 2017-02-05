@@ -14,7 +14,7 @@ Simply <a> [click here](https://ralev93.github.io/Colonizers-army-comparator/Arm
  OR 
  
 1. Download the zip file to your computer.
-2. Open Index.html with your favourite browser.
+2. Open index.html with your favourite browser.
 3. Compare & enjoy!
 
 # Contribute
