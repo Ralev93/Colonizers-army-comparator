@@ -24,7 +24,7 @@ var Cruiser = new Unit("Cruiser", 1.5, 20,{
     2 : charecteristics(283, 3800, 42500),
     3 : charecteristics(323, 4150, 50000),
     4 : charecteristics(356, 4500, 57500),
-    5 : charecteristics(356 + 39, 4800, 57500 + 7500) // 400k xp
+    5 : charecteristics(356 + 39, 4800, 57500 + 7500), // 400k xp
     6 : charecteristics(395 + 40, 4800 + 350,  65000 + 5000) // 600k xp  
 });
 
